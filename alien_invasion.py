@@ -36,12 +36,15 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
+
     def _check_keydown_events(self, event):
         """Responde quando apertamos as teclas"""
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
+        elif event.key == pygame.K_q:  # Atalho para fechar o game
+            sys.exit()
 
     def _check_keyup_events(self, event):
         """Responde quando soltamos as teclas"""
