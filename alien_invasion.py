@@ -27,6 +27,12 @@ class AlienInvasion:
             self.bullets.update()
             self._update_screen()
 
+            # Deletando as munições quando elas desaparecem da tela
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+                print(len(self.bullets))
+
     def _check_events(self):
         """Metodo acionado quando se aperta uma tecla ou mouse"""
         for event in pygame.event.get():
