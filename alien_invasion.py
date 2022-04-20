@@ -24,14 +24,8 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
-
-            # Deletando as munições quando elas desaparecem da tela
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-                print(len(self.bullets))
 
     def _check_events(self):
         """Metodo acionado quando se aperta uma tecla ou mouse"""
@@ -70,6 +64,16 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullet_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        """Atualiza a posição da munição e se livra delas quando fora da tela"""
+        # Atualiza a posição da munição
+        self.bullets.update()
+
+        # Deletando as munições quando elas desaparecem da tela
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
 
     def _update_screen(self):
         """Atualiza as imagens na tela e muda para a proxima tela"""
