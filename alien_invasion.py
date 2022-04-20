@@ -67,8 +67,9 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Cria uma nova munição e adiciona ela no Bullets Group"""
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.bullet_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
 
     def _update_screen(self):
         """Atualiza as imagens na tela e muda para a proxima tela"""
