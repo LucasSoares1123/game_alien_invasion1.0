@@ -1,8 +1,10 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """Uma classe para repressentar uma nave alien de frota"""
+
     def __init__(self, ai_game):
         super().__init__()
         self.screen = ai_game
@@ -17,4 +19,3 @@ class Alien(Sprite):
 
         # Armazena a posição exata da nave alien
         self.x = float(self.rect.x)
-
